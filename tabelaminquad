@@ -3,7 +3,7 @@
 
 
 #include <stdio.h>
-
+#include <math.h>
 
 
 
@@ -32,8 +32,8 @@ arr[10][1] = 0.4100;
 arr[11][1] = 0.4475;
 arr[12][1] = 0.4846;
 
-float medx;
-float medy;
+float medx = 0;
+float medy = 0;
 
 for(int j = 0; j < 13; j++) {
     medx += arr[j][0];
@@ -43,10 +43,23 @@ for(int j = 0; j < 13; j++) {
 medx = medx/13;
 medy = medy/13;
 
+float sum1 = 0;
+float sum2 = 0;
+float sum3 = 0;
+float sum4 = 0;
+float sum5 = 0;
+
+
 for(int k = 0; k < 13; k ++) {
-    printf("xi: %f\txi - medx: %f\txi^2:%f\t(xi - medx)^2: %f\n", arr[k][0], arr[k][0] - medx, arr[k][0] * arr[k][0], (arr[k][0] - medx)*(arr[k][0] - medx));
+    printf("xi: %f\tyi: %f\txi - medx: %f\txi^2:%f\t(xi - medx)^2: %f\n", fabsf(arr[k][0]), fabsf(arr[k][1]), fabsf(arr[k][0] - medx), fabsf(arr[k][0] * arr[k][0]), fabsf((arr[k][0] - medx)*(arr[k][0] - medx)));
+    sum1 += arr[k][0];
+    sum2 += arr[k][1];
+    sum3 += fabsf(arr[k][0] - medx);
+    sum4 += fabsf(arr[k][0] * arr[k][0]);
+    sum5 += fabsf((arr[k][0] - medx)*(arr[k][0] - medx));
 }
 
+printf("s_xi: %.4f\ts_yi: %.4f\ts_xi - medx: %f\ts_xi^2:%.4f\ts_(xi - medx)^2: %.4f\n", sum1, sum2, sum3, sum4, sum5);
 
 return 0;
 
