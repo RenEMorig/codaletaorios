@@ -1,0 +1,54 @@
+
+
+
+
+#include <stdio.h>
+
+
+
+
+
+int main() {
+
+float arr[13][2];
+
+float a = 0.2;
+for(int i = 0; i < 13; i++) {
+    arr[i][0] = a;
+    a += 0.2;
+}
+
+arr[0][1] = 0.030;
+arr[1][1] = 0.070;
+arr[2][1] = 0.107;
+arr[3][1] = 0.145;
+arr[4][1] = 0.183;
+arr[5][1] = 0.2217;
+arr[6][1] = 0.2586;
+arr[7][1] = 0.2969;
+arr[8][1] = 0.3344;
+arr[9][1] = 0.3725;
+arr[10][1] = 0.4100;
+arr[11][1] = 0.4475;
+arr[12][1] = 0.4846;
+
+float medx;
+float medy;
+
+for(int j = 0; j < 13; j++) {
+    medx += arr[j][0];
+    medy += arr[j][1];
+}
+
+medx = medx/13;
+medy = medy/13;
+
+for(int k = 0; k < 13; k ++) {
+    printf("xi: %f\txi - medx: %f\txi^2:%f\t(xi - medx)^2: %f\n", arr[k][0], arr[k][0] - medx, arr[k][0] * arr[k][0], (arr[k][0] - medx)*(arr[k][0] - medx));
+}
+
+
+return 0;
+
+
+}
