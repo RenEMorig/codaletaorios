@@ -1,7 +1,4 @@
 
-
-
-
 #include <stdio.h>
 #include <math.h>
 
@@ -10,14 +7,28 @@
 
 int main() {
 
-float arr[13][2];
+//o array tá definido para 13 pares de valores (x,y), para trocar para outro valor, é só trocar o valor de num
+int num = 13;
+float arr[num][2];
 
-float a = 0.2;
-for(int i = 0; i < 13; i++) {
-    arr[i][0] = a;
-    a += 0.2;
-}
 
+//colocar os valores de xi na ordem:
+arr[0][0] = 0.2;
+arr[1][0] = 0.4;
+arr[2][0] = 0.6;
+arr[3][0] = 0.8;
+arr[4][0] = 1.0;
+arr[5][0] = 1.2;
+arr[6][0] = 1.4;
+arr[7][0] = 1.6;
+arr[8][0] = 1.8;
+arr[9][0] = 2.0;
+arr[10][0] = 2.2;
+arr[11][0] = 2.4;
+arr[12][0] = 2.6;
+
+
+//colocar os valores de yi na ordem:
 arr[0][1] = 0.030;
 arr[1][1] = 0.070;
 arr[2][1] = 0.107;
@@ -32,16 +43,17 @@ arr[10][1] = 0.4100;
 arr[11][1] = 0.4475;
 arr[12][1] = 0.4846;
 
+//medx e medy são as médias dos valores de x e y, respectivamente
 float medx = 0;
 float medy = 0;
 
-for(int j = 0; j < 13; j++) {
+for(int j = 0; j < num; j++) {
     medx += arr[j][0];
     medy += arr[j][1];
 }
 
-medx = medx/13;
-medy = medy/13;
+medx = medx/num;
+medy = medy/num;
 
 float sum1 = 0;
 float sum2 = 0;
@@ -50,7 +62,7 @@ float sum4 = 0;
 float sum5 = 0;
 
 
-for(int k = 0; k < 13; k ++) {
+for(int k = 0; k < num; k ++) {
     printf("xi: %f\tyi: %f\txi - medx: %f\txi^2:%f\t(xi - medx)^2: %f\n", fabsf(arr[k][0]), fabsf(arr[k][1]), fabsf(arr[k][0] - medx), fabsf(arr[k][0] * arr[k][0]), fabsf((arr[k][0] - medx)*(arr[k][0] - medx)));
     sum1 += arr[k][0];
     sum2 += arr[k][1];
@@ -59,7 +71,9 @@ for(int k = 0; k < 13; k ++) {
     sum5 += fabsf((arr[k][0] - medx)*(arr[k][0] - medx));
 }
 
-printf("s_xi: %.4f\ts_yi: %.4f\ts_xi - medx: %f\ts_xi^2:%.4f\ts_(xi - medx)^2: %.4f\n", sum1, sum2, sum3, sum4, sum5);
+printf("s_xi: %.4f\ts_yi: %.4f\ts_(xi - medx): %.4f\ts_xi^2:%.4f\ts_[(xi - medx)^2]: %.4f\n", sum1, sum2, sum3, sum4, sum5);
+printf("s_xi, s_yi, s_xi - medx... sao os valores das somas de todos os elementos da coluna correspondentes\nmedx e medy sao os valores das medias de xi e yi\nse alguem tiver disposto a colocar o calculo de yci, (yci - yi)^2 e dos coeficientes linear e angular e seus erros eu (e mt gente) ficaria mt feliz");
+
 
 return 0;
 
