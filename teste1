@@ -1,0 +1,39 @@
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int main() {
+    srand(time(NULL));
+
+    int a,b;
+    printf("digite o tamanho da matriz(colunas linhas): ");
+    scanf("%d %d", &a, &b);
+
+    int** arr;
+    arr = malloc(a*sizeof(int*));
+
+    for(int i = 0; i < a; i++) {
+        arr[i] = malloc(a * sizeof(int));
+    }
+
+    for(int j = 0; j < b; j++) {
+        for(int k = 0; k < a; k++) {
+            arr[j][k] = rand();
+        }
+    }
+
+    for(int j = 0; j < b; j++) {
+        for(int k = 0; k < a; k++) {
+            printf("%d ", *(*(arr + j) + k));
+        }
+        printf("\n");
+    }
+
+    for(int i =0; i < b; i++) {
+        free(arr[i]);
+    }
+
+    free(arr);
+}
